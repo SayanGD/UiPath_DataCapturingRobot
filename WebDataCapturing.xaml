@@ -86,7 +86,11 @@
   <Sequence sap:VirtualizedContainerService.HintSize="952.6666666666666,2928" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="customerData" />
-      <Variable x:TypeArguments="x:Int32" Default="0" Name="rowCount" />
+      <Variable x:TypeArguments="x:Int32" Name="rowCount">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:Int32" Value="1" />
+        </Variable.Default>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -122,15 +126,15 @@
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[rowCount &lt; customerData.Rows.Count]" DisplayName="While" sap:VirtualizedContainerService.HintSize="876.6666666666666,2434" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_2">
+          <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="While" sap:VirtualizedContainerService.HintSize="876.6666666666666,2434" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_2">
             <ui:InterruptibleWhile.Body>
-              <Sequence sap:VirtualizedContainerService.HintSize="840,2268" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence sap:VirtualizedContainerService.HintSize="840,2264.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_6">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="10" DelayMS="10" DisplayName="Type first name" EmptyField="True" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;first name&quot;).ToString]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DelayMS="5" DisplayName="Type first name" EmptyField="True" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;first name&quot;).ToString]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eb0034ab-8bee-40d0-8613-47709e8f68c1" InformativeScreenshot="f30e8beebd0d1ed9e4b937199f6ca839" Selector="&lt;webctrl tag='INPUT' /&gt;">
                       <ui:Target.TimeoutMS>
@@ -142,7 +146,7 @@
                     </ui:Target>
                   </ui:TypeInto.Target>
                 </ui:TypeInto>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="10" DelayMS="0" DisplayName="Type last name" EmptyField="True" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;last name&quot;).ToString]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DelayMS="0" DisplayName="Type last name" EmptyField="True" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;last name&quot;).ToString]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bdac33b0-2be1-47d1-92ec-0d0d5196fe56" InformativeScreenshot="f5e574a46bca36785bcd6cd64bdf719c" Selector="&lt;webctrl tabindex='3' tag='INPUT' /&gt;">
                       <ui:Target.TimeoutMS>
@@ -154,7 +158,7 @@
                     </ui:Target>
                   </ui:TypeInto.Target>
                 </ui:TypeInto>
-                <If Condition="[customerData.Rows(rowCount)(&quot;gender&quot;).ToString = &quot;Male&quot;]" DisplayName="If: Select gender" sap:VirtualizedContainerService.HintSize="798,362" sap2010:WorkflowViewState.IdRef="If_1">
+                <If Condition="[customerData.Rows(rowCount)(&quot;gender&quot;).ToString = &quot;Male&quot;]" DisplayName="If: Select gender" sap:VirtualizedContainerService.HintSize="798,358.6666666666667" sap2010:WorkflowViewState.IdRef="If_1">
                   <If.Then>
                     <Sequence DisplayName="Select Male" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_9">
                       <sap:WorkflowViewStateService.ViewState>
@@ -162,7 +166,7 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="10" DelayMS="0" DisplayName="Click male radio button" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                      <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="5" DelayMS="0" DisplayName="Click male radio button" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                         <ui:Click.CursorPosition>
                           <ui:CursorPosition Position="Center">
                             <ui:CursorPosition.OffsetX>
@@ -193,7 +197,7 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="10" DelayMS="0" DisplayName="Click female radio button" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                      <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="5" DelayMS="0" DisplayName="Click female radio button" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                         <ui:Click.CursorPosition>
                           <ui:CursorPosition Position="Center">
                             <ui:CursorPosition.OffsetX>
@@ -218,7 +222,7 @@
                     </Sequence>
                   </If.Else>
                 </If>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DelayMS="5" DisplayName="Type Into Address" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_4" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;address&quot;).ToString]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DisplayName="Type Into Address" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_4" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;address&quot;).ToString]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e41b5a53-4596-4019-b3ba-f5b45694fde3" InformativeScreenshot="5c9aaa5cd55649a5fd513802c298d61f" Selector="&lt;webctrl tabindex='5' tag='INPUT' type='input' /&gt;">
                       <ui:Target.TimeoutMS>
@@ -230,7 +234,7 @@
                     </ui:Target>
                   </ui:TypeInto.Target>
                 </ui:TypeInto>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DelayMS="5" DisplayName="Type Into City" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_5" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;city&quot;).ToString]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DisplayName="Type Into City" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_5" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;city&quot;).ToString]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e41b5a53-4596-4019-b3ba-f5b45694fde3" InformativeScreenshot="ab29d216385f95a8ac81ce126ed99a2a" Selector="&lt;webctrl tabindex='6' tag='INPUT' type='input' /&gt;">
                       <ui:Target.TimeoutMS>
@@ -242,7 +246,7 @@
                     </ui:Target>
                   </ui:TypeInto.Target>
                 </ui:TypeInto>
-                <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="5" DelayBefore="5" DisplayName="Select Item State" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="[customerData.Rows(rowCount)(&quot;state&quot;).ToString]">
+                <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="5" DisplayName="Select Item State" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="[customerData.Rows(rowCount)(&quot;state&quot;).ToString]">
                   <ui:SelectItem.Items>
                     <scg:List x:TypeArguments="x:String" Capacity="50">
                       <x:String>Choose a state...</x:String>
@@ -308,7 +312,7 @@
                     </ui:Target>
                   </ui:SelectItem.Target>
                 </ui:SelectItem>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DelayMS="5" DisplayName="Type Into home phone number" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_6" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;home phone&quot;).ToString]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DisplayName="Type Into home phone number" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_6" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;home phone&quot;).ToString]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e41b5a53-4596-4019-b3ba-f5b45694fde3" InformativeScreenshot="855f6f74dfd5cf02fbca098bde44edaa" Selector="&lt;webctrl tabindex='8' tag='INPUT' type='input' /&gt;">
                       <ui:Target.TimeoutMS>
@@ -320,7 +324,7 @@
                     </ui:Target>
                   </ui:TypeInto.Target>
                 </ui:TypeInto>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DelayMS="5" DisplayName="Type Into work phone number" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_7" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;work phone&quot;).ToString]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DisplayName="Type Into work phone number" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_7" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;work phone&quot;).ToString]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e41b5a53-4596-4019-b3ba-f5b45694fde3" InformativeScreenshot="fc3ae0c9cb4379b880cb171c37743120" Selector="&lt;webctrl tabindex='9' tag='INPUT' type='input' /&gt;">
                       <ui:Target.TimeoutMS>
@@ -332,7 +336,7 @@
                     </ui:Target>
                   </ui:TypeInto.Target>
                 </ui:TypeInto>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DelayMS="5" DisplayName="Type Into personal email" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_9" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;personal email&quot;).ToString]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DisplayName="Type Into personal email" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_9" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;personal email&quot;).ToString]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e41b5a53-4596-4019-b3ba-f5b45694fde3" InformativeScreenshot="92eeb580dd43a165eaa4ef25e9fde4ad" Selector="&lt;webctrl tag='INPUT' type='email' /&gt;">
                       <ui:Target.TimeoutMS>
@@ -344,7 +348,7 @@
                     </ui:Target>
                   </ui:TypeInto.Target>
                 </ui:TypeInto>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DelayMS="5" DisplayName="Type Into work email" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_8" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;work email&quot;).ToString]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DisplayName="Type Into work email" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_8" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;work email&quot;).ToString]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e41b5a53-4596-4019-b3ba-f5b45694fde3" InformativeScreenshot="52e400f12d58b1d0f8fc43e42f618137" Selector="&lt;webctrl tabindex='11' tag='INPUT' type='email' /&gt;">
                       <ui:Target.TimeoutMS>
@@ -356,7 +360,7 @@
                     </ui:Target>
                   </ui:TypeInto.Target>
                 </ui:TypeInto>
-                <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="5" DelayMS="5" DisplayName="Click on Add button" sap:VirtualizedContainerService.HintSize="798,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                <ui:Click AlterIfDisabled="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="5" DisplayName="Click on Add button" sap:VirtualizedContainerService.HintSize="798,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                   <ui:Click.CursorPosition>
                     <ui:CursorPosition Position="Center">
                       <ui:CursorPosition.OffsetX>
@@ -388,6 +392,9 @@
                 </Assign>
               </Sequence>
             </ui:InterruptibleWhile.Body>
+            <ui:InterruptibleWhile.Condition>
+              <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="rowCount &lt;= customerData.Rows.Count" />
+            </ui:InterruptibleWhile.Condition>
           </ui:InterruptibleWhile>
         </ActivityAction>
       </ui:OpenBrowser.Body>
