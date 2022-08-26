@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="942.6666666666666,1628.6666666666667" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="942.6666666666666,2150.6666666666665" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
       <x:String>System.Activities</x:String>
@@ -82,14 +82,10 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="952.6666666666666,1564" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap:VirtualizedContainerService.HintSize="952.6666666666666,2086" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="customerData" />
-      <Variable x:TypeArguments="x:Int32" Name="rowCount">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="rowCount" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -119,15 +115,15 @@
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
-    <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="910.6666666666666,1172.6666666666667" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Private="False" Url="https://www.theautomationchallenge.com/crm">
+    <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="910.6666666666666,1694.6666666666667" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Private="False" Url="https://www.theautomationchallenge.com/crm">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="While" sap:VirtualizedContainerService.HintSize="876.6666666666666,1070" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_2">
+          <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[rowCount &lt; customerData.Rows.Count]" DisplayName="While" sap:VirtualizedContainerService.HintSize="876.6666666666666,1592" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_2">
             <ui:InterruptibleWhile.Body>
-              <Sequence sap:VirtualizedContainerService.HintSize="840,900.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence sap:VirtualizedContainerService.HintSize="840,1948" sap2010:WorkflowViewState.IdRef="Sequence_6">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -157,7 +153,7 @@
                     </ui:Target>
                   </ui:TypeInto.Target>
                 </ui:TypeInto>
-                <If Condition="[customerData.Rows(rowCount)(&quot;gender&quot;).ToString = &quot;Male&quot;]" DisplayName="If: Select gender" sap:VirtualizedContainerService.HintSize="798,358.6666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+                <If Condition="[customerData.Rows(rowCount)(&quot;gender&quot;).ToString = &quot;Male&quot;]" DisplayName="If: Select gender" sap:VirtualizedContainerService.HintSize="798,362" sap2010:WorkflowViewState.IdRef="If_1">
                   <If.Then>
                     <Sequence DisplayName="Select Male" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_9">
                       <sap:WorkflowViewStateService.ViewState>
@@ -221,6 +217,78 @@
                     </Sequence>
                   </If.Else>
                 </If>
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DelayMS="5" DisplayName="Type Into Address" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_4" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;address&quot;).ToString]">
+                  <ui:TypeInto.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e41b5a53-4596-4019-b3ba-f5b45694fde3" InformativeScreenshot="5c9aaa5cd55649a5fd513802c298d61f" Selector="&lt;webctrl tabindex='5' tag='INPUT' type='input' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:TypeInto.Target>
+                </ui:TypeInto>
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DelayMS="5" DisplayName="Type Into City" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_5" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;city&quot;).ToString]">
+                  <ui:TypeInto.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e41b5a53-4596-4019-b3ba-f5b45694fde3" InformativeScreenshot="ab29d216385f95a8ac81ce126ed99a2a" Selector="&lt;webctrl tabindex='6' tag='INPUT' type='input' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:TypeInto.Target>
+                </ui:TypeInto>
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DelayMS="5" DisplayName="Type Into home phone number" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_6" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;home phone&quot;).ToString]">
+                  <ui:TypeInto.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e41b5a53-4596-4019-b3ba-f5b45694fde3" InformativeScreenshot="855f6f74dfd5cf02fbca098bde44edaa" Selector="&lt;webctrl tabindex='8' tag='INPUT' type='input' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:TypeInto.Target>
+                </ui:TypeInto>
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DelayMS="5" DisplayName="Type Into work phone number" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_7" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;work phone&quot;).ToString]">
+                  <ui:TypeInto.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e41b5a53-4596-4019-b3ba-f5b45694fde3" InformativeScreenshot="fc3ae0c9cb4379b880cb171c37743120" Selector="&lt;webctrl tabindex='9' tag='INPUT' type='input' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:TypeInto.Target>
+                </ui:TypeInto>
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DelayMS="5" DisplayName="Type Into personal email" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_9" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;personal email&quot;).ToString]">
+                  <ui:TypeInto.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e41b5a53-4596-4019-b3ba-f5b45694fde3" InformativeScreenshot="92eeb580dd43a165eaa4ef25e9fde4ad" Selector="&lt;webctrl tag='INPUT' type='email' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:TypeInto.Target>
+                </ui:TypeInto>
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="5" DelayMS="5" DisplayName="Type Into work email" sap:VirtualizedContainerService.HintSize="798,134" sap2010:WorkflowViewState.IdRef="TypeInto_8" SimulateType="True" Text="[customerData.Rows(rowCount)(&quot;work email&quot;).ToString]">
+                  <ui:TypeInto.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e41b5a53-4596-4019-b3ba-f5b45694fde3" InformativeScreenshot="52e400f12d58b1d0f8fc43e42f618137" Selector="&lt;webctrl tabindex='11' tag='INPUT' type='email' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:TypeInto.Target>
+                </ui:TypeInto>
                 <Assign DisplayName="Counter" sap:VirtualizedContainerService.HintSize="798,62" sap2010:WorkflowViewState.IdRef="Assign_1">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Int32">[rowCount]</OutArgument>
@@ -231,9 +299,6 @@
                 </Assign>
               </Sequence>
             </ui:InterruptibleWhile.Body>
-            <ui:InterruptibleWhile.Condition>
-              <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="rowCount &lt; customerData.Rows.Count" />
-            </ui:InterruptibleWhile.Condition>
           </ui:InterruptibleWhile>
         </ActivityAction>
       </ui:OpenBrowser.Body>
