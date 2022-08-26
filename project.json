@@ -3,9 +3,9 @@
   "description": "Data capturing robot that reads data from Excel file and uploads that data in a web application and a desktop application.",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[2.13.0-preview]",
+    "UiPath.Excel.Activities": "[2.14.0-preview]",
     "UiPath.Form.Activities": "[2.0.2-preview]",
-    "UiPath.Mail.Activities": "[1.16.0-preview]",
+    "UiPath.Mail.Activities": "[1.17.0-preview]",
     "UiPath.MobileAutomation.Activities": "[22.4.5]",
     "UiPath.OCR.Activities": "[3.8.0-preview]",
     "UiPath.PDF.Activities": "[3.8.0-preview]",
